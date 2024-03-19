@@ -1,0 +1,76 @@
+@use "../../../styles/mixins.scss" as *;
+
+.section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  @include breakpoint(md) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  @include breakpoint(sm) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.wrapper {
+  background-image: url(https://i.imgur.com/IOX4sDj.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  min-height: 400px;
+  padding: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--clr-on-bold-bg);
+
+  @include breakpoint("xl") {
+    min-height: 280px;
+  }
+
+  @include breakpoint("md") {
+    padding: 40px 20px;
+  }
+
+  @include breakpoint("sm") {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    border-radius: 8px;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 1.875rem;
+    max-width: 480px;
+    text-align: center;
+    margin-bottom: 36px;
+
+    @include breakpoint("xl") {
+      font-size: 1.5rem;
+    }
+
+    @include breakpoint("md") {
+      font-size: 1.25rem;
+    }
+
+    @include breakpoint("sm") {
+      margin-bottom: 16px;
+    }
+
+    span {
+      color: var(--clr-tertiary);
+      font-weight: 700;
+    }
+  }
+
+  p {
+    margin-top: 20px;
+    text-align: center;
+  }
+}

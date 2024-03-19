@@ -1,0 +1,110 @@
+@use "../../styles/mixins.scss" as *;
+
+.container {
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  color: var(--clr-contrast);
+  background-color: var(--clr-background);
+  border: 1px solid var(--clr-contrast-low);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @include breakpoint("xl") {
+    width: 50px;
+    height: 50px;
+  }
+
+  @include breakpoint("lg") {
+    width: 40px;
+    height: 40px;
+  }
+
+  svg {
+    width: 1.75em;
+    height: 1.75em;
+    fill: currentColor;
+
+    @include breakpoint("xl") {
+      width: 1.5em;
+      height: 1.5em;
+    }
+
+    @include breakpoint("lg") {
+      width: 1.25em;
+      height: 1.25em;
+    }
+  }
+
+  &--sm {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 1.25em;
+      height: 1.25em;
+    }
+  }
+
+  &--lg {
+    &.btnPrev,
+    &.btnNext {
+      top: 170px; // Make it centered with image
+
+      @include breakpoint("xxl") {
+        top: 135px;
+      }
+
+      @include breakpoint("xl") {
+        top: 115px;
+      }
+
+      @include breakpoint("lg") {
+        top: 100px;
+      }
+    }
+  }
+
+  &--md {
+    top: 134px;
+
+    @include breakpoint("xxl") {
+      top: 40%;
+    }
+  }
+}
+
+.btnPrev {
+  left: 0;
+  transform: translate(-50%, -50%);
+
+  &.btn--lg {
+    transform: translate(-50%, -50%);
+
+    @include breakpoint("sm") {
+      transform: translate(-35%, -50%);
+    }
+  }
+}
+
+.btnNext {
+  right: 0;
+  transform: translate(50%, -50%);
+
+  &.btn--lg {
+    transform: translate(50%, -50%);
+
+    @include breakpoint("sm") {
+      transform: translate(35%, -50%);
+    }
+  }
+}

@@ -1,0 +1,396 @@
+@use "../../styles/mixins.scss" as *;
+
+.wrapper {
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  @include breakpoint(xl) {
+    margin-bottom: 60px;
+  }
+}
+
+.mainSection {
+  min-height: 700px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+
+  @include breakpoint(xl) {
+    margin-bottom: 60px;
+  }
+
+  @include breakpoint(lg) {
+    flex-direction: column;
+  }
+
+  @include breakpoint(sm) {
+    margin-bottom: 48px;
+  }
+
+  @media print {
+    margin-bottom: 5mm;
+  }
+}
+
+.bannerWrapper {
+  flex-basis: 50.75%;
+  flex-shrink: 0;
+
+  @include breakpoint(lg) {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 24px;
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailWrapper {
+  flex-grow: 1;
+
+  @include breakpoint(lg) {
+    width: 100%;
+    max-width: 720px;
+  }
+}
+
+.watchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  max-width: 156px;
+  border: 1px solid var(--clr-contrast);
+  border-left: none;
+  border-bottom: none;
+  transition: all 0.2s;
+
+  @include link-when-active {
+    background-color: var(--clr-secondary);
+    color: var(--clr-on-bold-bg);
+  }
+
+  @include breakpoint(lg) {
+    border-left: 1px solid var(--clr-contrast);
+  }
+
+  @media print {
+    display: none;
+  }
+
+  span {
+    margin-left: 8px;
+  }
+}
+
+.headline {
+  width: 100%;
+  max-width: 600px;
+  padding: 48px 36px 34px 52px;
+  border: 1px solid var(--clr-contrast);
+  border-left: none;
+
+  @include breakpoint(lg) {
+    max-width: 100%;
+    border-left: 1px solid var(--clr-contrast);
+  }
+
+  @include breakpoint(md) {
+    padding: 36px;
+  }
+
+  @include breakpoint(sm) {
+    padding: 32px 28px;
+  }
+
+  @media print {
+    padding: 0;
+    max-width: unset;
+    border: none;
+  }
+}
+
+.title {
+  font-family: var(--ff-heading);
+  font-weight: 700;
+  font-size: 2.75rem;
+  padding-bottom: 0.5em;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  position: relative;
+  margin-bottom: 24px;
+
+  @include breakpoint(xxl) {
+    font-size: 2.25rem;
+  }
+
+  @include breakpoint(xl) {
+    font-size: 1.875rem;
+  }
+
+  @include breakpoint(md) {
+    font-size: 1.625rem;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 1.375rem;
+    margin-bottom: 18px;
+  }
+
+  @media print {
+    font-size: 18pt;
+    margin-bottom: 0;
+    max-width: unset;
+    page-break-after: avoid;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 75%;
+    height: 1px;
+    bottom: 0;
+    background-color: var(--clr-contrast-medium);
+
+    @media print {
+      width: 100%;
+    }
+  }
+}
+
+.tags {
+  @media print {
+    display: none;
+  }
+}
+
+.division {
+  margin-top: 20px;
+
+  & > span {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--clr-contrast-medium);
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+
+    &::before {
+      display: inline-block;
+      content: "";
+      width: 16px;
+      height: 4px;
+      margin-right: 4px;
+      background-color: var(--clr-contrast-medium);
+    }
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.actions {
+  display: flex;
+  margin-left: 52px;
+  margin-top: 30px;
+
+  & > * + * {
+    margin-left: 12px;
+  }
+
+  @include breakpoint(lg) {
+    margin-left: 0;
+    margin-top: 24px;
+    justify-content: flex-end;
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.actionBtn {
+  background-color: var(--clr-contrast);
+  color: var(--clr-on-bold-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 18px;
+  cursor: pointer;
+
+  @include breakpoint(sm) {
+    padding: 8px 12px;
+  }
+
+  &:hover {
+    background-color: var(--clr-secondary);
+  }
+
+  svg {
+    margin-right: 8px;
+  }
+
+  &:disabled {
+    color: var(--clr-contrast);
+    background-color: var(--clr-contrast-low);
+    cursor: default;
+  }
+}
+/* Main */
+.main {
+  display: flex;
+
+  @include breakpoint(xl) {
+    flex-direction: column;
+  }
+}
+
+.recipeInfo {
+  @include breakpoint(xl) {
+    margin-bottom: 60px;
+  }
+
+  @include breakpoint(lg) {
+    margin-bottom: 32px;
+  }
+}
+
+.ingredients {
+  margin-bottom: 60px;
+  width: 100%;
+
+  @include breakpoint(lg) {
+    margin-bottom: 32px;
+  }
+
+  @media print {
+    margin-bottom: 4mm;
+  }
+}
+
+.sectionTitle {
+  width: fit-content;
+  font-family: var(--ff-heading);
+  font-weight: 700;
+  font-size: 1.75rem;
+  position: relative;
+  background-image: linear-gradient(to bottom, transparent 50%, var(--clr-tertiary) 50%);
+
+  @include breakpoint(xxl) {
+    font-size: 1.5rem;
+  }
+
+  @include breakpoint(md) {
+    font-size: 1.375rem;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 1.25rem;
+  }
+
+  @media print {
+    font-size: 14pt;
+    background-image: none;
+    page-break-after: avoid;
+  }
+}
+
+.sectionBody {
+  color: var(--clr-contrast);
+  font-size: 1.125rem;
+  position: relative;
+  padding-left: 36px;
+  padding-right: 36px;
+
+  @include create-paper-pattern(var(--note-line-height), var(--clr-background-note), var(--clr-line-note));
+
+  @include breakpoint(md) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include breakpoint(sm) {
+    font-size: 1rem;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @media print {
+    font-size: 12pt;
+    line-height: 2;
+    padding: 4mm 0 0 4mm;
+  }
+}
+
+.ingredientsList {
+  list-style: none;
+}
+
+.ingredient {
+  display: flex;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  padding-left: 44px;
+  position: relative;
+  font-weight: 500;
+
+  @include breakpoint(md) {
+    padding-left: 32px;
+  }
+
+  > span:not(input) {
+    @media print {
+      line-height: 1.5;
+      padding-bottom: 7pt;
+    }
+  }
+}
+
+.ingredientMeasure {
+  margin-left: auto;
+}
+
+.tooltip {
+  background-color: var(--clr-background-note) !important;
+  width: 112px;
+  height: 112px;
+  border: 2px solid var(--clr-contrast) !important;
+  border-radius: 6px !important;
+  box-shadow: 2px 2px 0 var(--clr-contrast) !important;
+
+  @media print {
+    display: none;
+  }
+
+  img {
+    max-width: 100px;
+  }
+}

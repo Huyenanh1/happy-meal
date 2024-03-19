@@ -1,0 +1,160 @@
+@use "../../styles/mixins.scss" as *;
+
+.navList {
+  list-style: none;
+  display: flex;
+
+  @include breakpoint(lg) {
+    flex-direction: column;
+  }
+}
+
+.navItem {
+  margin: 0 30px;
+  position: relative;
+
+  @include breakpoint(xl) {
+    margin: 0 24px;
+  }
+
+  @include breakpoint(lg) {
+    margin: 0;
+  }
+}
+
+.navLink {
+  @include link-when-active {
+    color: var(--clr-primary);
+  }
+}
+
+.navLabel {
+  font: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 60%;
+    height: 3px;
+    bottom: 10px;
+    left: 0;
+    background-color: var(--clr-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+
+    @include breakpoint(lg) {
+      display: none;
+    }
+  }
+
+  @include link-when-active {
+    @include breakpoint(lg) {
+      color: var(--clr-primary);
+    }
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:global.active {
+    color: var(--clr-primary);
+
+    @include breakpoint(lg) {
+      color: var(--clr-on-bold-bg);
+      background-color: var(--clr-primary);
+    }
+
+    // &::after {
+    //   transform: scaleX(1);
+    // }
+  }
+}
+
+.navLink,
+.navLabel {
+  font-size: 1.125rem;
+  font-weight: 500;
+  display: block;
+  padding: 16px 0;
+
+  @include breakpoint(xl) {
+    font-size: 1rem;
+  }
+
+  @include breakpoint(lg) {
+    padding: 10px var(--container-padding);
+    border-top: 1px solid var(--clr-contrast-low);
+  }
+
+  @include breakpoint(sm) {
+    font-size: 0.875rem;
+  }
+}
+
+.navDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--clr-background);
+  border: 1px solid var(--clr-contrast-low);
+  box-shadow: 3px 4px 4px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  min-width: 200px;
+  z-index: 1000;
+  opacity: 1;
+  animation: fadeIn 0.3s ease forwards;
+
+  @include breakpoint(lg) {
+    position: static;
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown {
+  list-style: none;
+  height: fit-content;
+  overflow-y: auto;
+
+  // &::-webkit-scrollbar {
+  //   width: 6px;
+  // }
+
+  // &::-webkit-scrollbar-track {
+  //   background: var(--clr-background);
+  // }
+
+  // &::-webkit-scrollbar-thumb {
+  //   background: var(--clr-contrast-low);
+  //   border-radius: 5px;
+  // }
+}
+
+.dropItem {
+  display: block;
+  padding: 6px 24px;
+  font-size: 1rem;
+
+  @include link-when-active {
+    background-color: var(--clr-primary);
+    color: var(--clr-on-bold-bg);
+  }
+}

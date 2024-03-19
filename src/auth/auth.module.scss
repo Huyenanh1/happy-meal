@@ -1,0 +1,152 @@
+@use "../styles/mixins.scss" as *;
+
+.wrapper {
+  padding: 80px var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint(xl) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.form {
+  font-size: 1rem;
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--clr-background-note);
+  border-radius: 10px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+
+  @include breakpoint(xl) {
+    padding: 36px;
+  }
+
+  @include breakpoint(md) {
+    padding: 28px;
+  }
+
+  @include breakpoint(sm) {
+    padding: 24px 16px;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    @include breakpoint(sm) {
+      padding: 12px 16px;
+    }
+  }
+}
+
+.formTop {
+  margin-bottom: 36px;
+  text-align: center;
+
+  @include breakpoint(sm) {
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+
+    @include breakpoint(xl) {
+      font-size: 1.75rem;
+    }
+
+    @include breakpoint(md) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.forgotMessage {
+  font-weight: 500;
+}
+
+.submit {
+  display: block;
+  margin-top: 20px;
+  border: none;
+  background-color: var(--clr-primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  color: var(--clr-on-bold-bg);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible {
+    background-color: var(--clr-primary-hover);
+  }
+
+  &:disabled {
+    background-color: var(--clr-primary-disabled);
+    cursor: not-allowed;
+  }
+}
+
+.snsMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 16px;
+
+  @include breakpoint(sm) {
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 1px;
+    background-color: var(--clr-contrast);
+  }
+
+  &::before {
+    margin-right: 6px;
+  }
+
+  &::after {
+    margin-left: 6px;
+  }
+}
+
+.snsButton {
+  background-color: transparent;
+  border: 1px solid var(--clr-contrast-low);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: 1.25em;
+    margin-right: 8px;
+
+    @include breakpoint(sm) {
+      font-size: 1em;
+    }
+  }
+}
+
+.changeActionMessage {
+  margin-top: 20px;
+  text-align: center;
+
+  a {
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,41 @@
+@import "./breakpoints.scss";
+
+@mixin link-when-active() {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+@mixin create-paper-pattern($line-height, $background-color, $line-color) {
+  line-height: $line-height;
+  padding-top: calc($line-height * 1em);
+  padding-bottom: calc($line-height * 1em);
+  margin-bottom: calc($line-height * 1em / 4);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background: $background-color;
+    background-image: repeating-linear-gradient($line-color 0 1px, transparent 0 calc($line-height * 1em));
+    background-origin: content-box;
+    transform: translateY(calc($line-height * -1em / 4));
+  }
+}
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint `#{$breakpoint}`.";
+  }
+}
